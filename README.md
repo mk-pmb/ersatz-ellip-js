@@ -41,7 +41,7 @@ Make sure your `gap` has a positive length.
 Usage
 -----
 
-see [test.usage.mjs](test.usage.mjs):
+see [test.usage.mjs](test.usage.mjs).
 
 
 
