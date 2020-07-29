@@ -14,7 +14,7 @@ arrays and similar.
 API
 ---
 
-This module exports one function:
+This module exports one function with one method:
 
 ### ersatzEllip(seq[, max[, end[, gap]]])
 
@@ -34,6 +34,20 @@ from the front. Like with `max`, can be a fraction.
 If `seq` needs to be shortened, the copied part(s) are glued together with
 `gap`, which defaults to `…`.
 Make sure your `gap` has a positive length.
+
+
+
+### ersatzEllip.split(seq, max, end, gap)
+
+Just the splitting part. Returns an Array with one or two subsequences.
+Usecases include encoding the subsequences individually and then joining
+them with a `gap` that shall not be encoded.
+
+If there is a second part, the array will also carry a property `gap` that
+holds the effective `gap` value that was used to calculate part lengths.
+
+For your destructuring convenience, the result array will also carry its
+parts as additional properties `head` and (if applicable) `tail`.
 
 
 

@@ -21,6 +21,32 @@ t(hw, { max: 8, end: 0 },       'Hello W…');
 t(hw, { max: 8, end: 0.25 },    'Hello…d!');
 
 
+function arr2dict(x) { return Object.assign({ length: x.length }, x); }
+function splat(...args) { return arr2dict(ellip.split(...args)); }
+
+eq(splat(hw, 16), {
+  length: 1,
+  0: hw,
+  head: hw,
+});
+eq(splat(hw, 10), {
+  length: 2,
+  0: 'Hello',
+  1: 'rld!',
+  gap: '…',
+  head: 'Hello',
+  tail: 'rld!',
+});
+eq(splat(hw, 9, 0, '::'), {
+  length: 2,
+  0: 'Hello W',
+  1: '',
+  head: 'Hello W',
+  tail: '',
+  gap: '::',
+});
+
+
 
 
 
