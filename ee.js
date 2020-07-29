@@ -13,7 +13,7 @@ function ersatzEllip(seq, max, end, gap) {
 ersatzEllip.split = function eeCore(seq, max, end, gap) {
   max = +(max || 0);
   if (max < 1) { max = 72; }
-  if (!gap) { gap = '…'; }
+  if ((!gap) && (gap !== '')) { gap = '…'; }
   if (seq.length <= max) {
     max = [seq];
     max.head = seq;

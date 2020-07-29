@@ -33,7 +33,8 @@ from the front. Like with `max`, can be a fraction.
 
 If `seq` needs to be shortened, the copied part(s) are glued together with
 `gap`, which defaults to `…`.
-Make sure your `gap` has a positive length.
+Make sure your `gap` has a length greater than or equal to 0.
+(Versions before 1.0.3 had required a positive length.)
 
 
 

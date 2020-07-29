@@ -1,5 +1,5 @@
 { "name": "ersatz-ellip",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An ellipsis function that's usually good enough. Works with strings, arrays and similar.",
   "keywords": [
     "ellipsis",

@@ -7,14 +7,19 @@ import ellip from '.';
 const eq = assert.deepStrictEqual;
 function ar(x) { return x && Array.from(x); }
 
-function t(input, opt, want) {
+function t(input, opt, want, arrWant) {
   const { max, end, gap } = opt;
   eq(ellip(input, max, end, gap), want);
-  eq(ellip(ar(input), max, end, ar(gap)), ar(want));
+  eq(ellip(ar(input), max, end, ar(gap)), arrWant || ar(want));
 }
 
 const hw = 'Hello World!';
 t(hw, { max: 10 },              'Hello…rld!');
+t(hw, { max: 10, gap: '' },     'Helloorld!',
+  // NB:  In array mode, our "t" function covnerts the gap to an
+  //      array that is not empty but contains one element, ''.
+  ['H', 'e', 'l', 'l', 'o', '', 'o', 'r', 'l', 'd', '!']);
+
 t(hw, { max: 10, gap: '...' },  'Hell...ld!');
 t(hw, { max: 9 },               'Hell…rld!');
 t(hw, { max: 8, end: 0 },       'Hello W…');
@@ -36,6 +41,14 @@ eq(splat(hw, 10), {
   gap: '…',
   head: 'Hello',
   tail: 'rld!',
+});
+eq(splat(hw, 10, undefined, ''), {
+  length: 2,
+  0: 'Hello',
+  1: 'orld!',
+  gap: '',
+  head: 'Hello',
+  tail: 'orld!',
 });
 eq(splat(hw, 9, 0, '::'), {
   length: 2,
